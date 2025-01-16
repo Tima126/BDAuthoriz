@@ -24,3 +24,8 @@ GO
 ALTER DATABASE AUDIT SPECIFICATION Database_Audit_Specification
 WITH (STATE = ON);
 GO
+
+SELECT event_time, action_id, succeeded, object_name, statement
+FROM sys.fn_get_audit_file('C:\AuditLogs\*.sqlaudit', DEFAULT, DEFAULT)
+WHERE object_name = 'Products'; 
+
